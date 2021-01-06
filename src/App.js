@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, Route } from 'wouter';
-import Home from './pages/Home';
-import Detail from './pages/Detail';
-import SearchResult from './pages/SearchResult';
-import StaticContext from './context/StaticContext';
-import { GifsContextProvider } from './context/GifsContext';
 
-import './App.css';
+import Home from 'pages/Home';
+import Detail from 'pages/Detail';
+import SearchResult from 'pages/SearchResult';
+import StaticContext from 'context/StaticContext';
+import { GifsContextProvider } from 'context/GifsContext';
+
+import 'App.css';
 
 export default function App() {
 	return (

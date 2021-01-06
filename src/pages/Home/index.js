@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'wouter';
-import useGifs from '../../hooks/useGifs';
-import ListOfGifs from '../../components/ListOfGifs';
-const POPULAR = ['goku', 'vegeta', 'trunks'];
+import { useLocation } from 'wouter';
+
+import useGifs from 'hooks/useGifs';
+import ListOfGifs from 'components/ListOfGifs';
+import LazyTrending from 'components/TrendingSearches';
 
 export default function Home() {
 	const [keyword, setKeyword] = useState('');
@@ -31,22 +32,14 @@ export default function Home() {
 			</form>
 			<div className="text-center">
 				<h3>Ultima busqueda</h3>
-
-				<h3>Los Gifs mas populares</h3>
 			</div>
 
-			<div className="columns">
-				<ListOfGifs gifs={gifs} />
-			</div>
+			<ListOfGifs gifs={gifs} />
 
-			<ul className="text-center">
-				{POPULAR.map(pop => (
-					<li key={pop}>
-						<Link href={`/search/${pop}`}>Gifs de {pop}</Link>
-						<br />
-					</li>
-				))}
-			</ul>
+			<div className="text-center">
+				<h3>Tendencias</h3>
+			</div>
+			<LazyTrending />
 		</>
 	);
 }
