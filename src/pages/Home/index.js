@@ -34,7 +34,7 @@ export default function Home() {
 				<h3>Ultima busqueda</h3>
 			</div>
 
-			<ListOfGifs gifs={gifs} />
+			<ListOfGifs gifs={gifs} loading={loading} />
 
 			<div className="text-center">
 				<h3>Tendencias</h3>

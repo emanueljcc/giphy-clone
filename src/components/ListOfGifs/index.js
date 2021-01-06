@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Gif from '../Gif/Gif';
-// import Spinner from '../Spinner';
+import Spinner from '../Spinner';
 
-function ListOfGifs({ gifs, name }) {
+function ListOfGifs({ gifs, name, loading }) {
 	// if (loading) return <Spinner />;
 	return (
 		<>
@@ -12,10 +12,14 @@ function ListOfGifs({ gifs, name }) {
 					{decodeURI(name)}
 				</h1>
 			)}
-			<div className="galery">
-				{gifs.map(({ id, title, url }) => (
-					<Gif id={id} title={title} url={url} key={id} />
-				))}
+			<div className="galery" style={{ paddingTop: 80 }}>
+				{gifs.length && !loading ? (
+					gifs.map(({ id, title, url }) => (
+						<Gif id={id} title={title} url={url} key={id} />
+					))
+				) : (
+					<Spinner />
+				)}
 			</div>
 		</>
 	);
