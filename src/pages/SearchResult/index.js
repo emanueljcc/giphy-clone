@@ -19,7 +19,7 @@ export default function SearchResult({ params }) {
 						onClick={handleNextPage}
 						style={{ borderRadius: 25, fontSize: 15 }}
 					>
-						Siguiente página
+						Load more
 					</button>
 				) : (
 					<Spinner />

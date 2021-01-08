@@ -27,7 +27,7 @@ export default function Home() {
 					type="text"
 					value={keyword}
 					onChange={handleChange}
-					placeholder="Buscar..."
+					placeholder="Search..."
 				/>
 			</form>
 			<div className="text-center">

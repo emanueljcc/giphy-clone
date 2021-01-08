@@ -30,7 +30,5 @@ export default function useGifs(keyword = null) {
 		});
 	}, [page, keywordToUse, setGifs]);
 
-	console.log(loadingNextPage);
-
 	return { loading, gifs, loadingNextPage, page, setPage };
 }

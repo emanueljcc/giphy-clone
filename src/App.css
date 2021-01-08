@@ -1,7 +1,7 @@
 body {
-  background-color: #282c34;
   font-family: Calluna, Arial, sans-serif;
   min-height: 1000px;
+  height: 100vh;
   margin: 0 auto;
 }
 

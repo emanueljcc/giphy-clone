@@ -17,6 +17,7 @@
 html {
   box-sizing: border-box;
   font-size: 1rem;
+  background-color: var(--theme-body-bg) !important;
 }
 input {
   border-radius: 10px;
