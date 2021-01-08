@@ -10,10 +10,7 @@ export default function SearchResult({ params }) {
 	const { keyword } = params;
 	const { loading, loadingNextPage, gifs, page, setPage } = useGifs(keyword);
 	const externalRef = useRef();
-	const { isNearScreen } = useNearScreen({
-		externalRef: loading ? null : externalRef,
-		once: false
-	});
+	const { isNearScreen } = useNearScreen(loading ? null : externalRef, false);
 
 	// const handleNextPage = () => setPage(page + 1);
 

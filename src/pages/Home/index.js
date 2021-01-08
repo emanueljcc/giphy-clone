@@ -31,7 +31,7 @@ export default function Home() {
 				/>
 			</form>
 			<div className="text-center">
-				<h3>Ultima busqueda</h3>
+				<h3>Last search</h3>
 			</div>
 
 			<ListOfGifs gifs={gifs} loading={loading} />
