@@ -1,17 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Hook para hacer intersection observer
-export default function useNearScreen() {
+export default function useNearScreen(externalRef, once = true) {
 	const [isNearScreen, setIsNearScreen] = useState(false);
 	const fromRef = useRef();
 
 	useEffect(() => {
 		let observer;
+
+		const element = externalRef ? externalRef.current : fromRef.current;
+
 		const onChange = (entries, observer) => {
 			const el = entries[0];
 			if (el.isIntersecting) {
 				setIsNearScreen(true);
-				observer.disconnect(); // para evitar llamados cada vez que hace interseccion con el elemento
+				once && observer.disconnect(); // para evitar llamados cada vez que hace interseccion con el elemento
+			} else {
+				!once && setIsNearScreen(false);
 			}
 		};
 
@@ -26,9 +31,9 @@ export default function useNearScreen() {
 				rootMargin: '100px'
 			});
 
-			observer.observe(fromRef.current);
+			if (element) observer.observe(element);
 		});
-	}, []);
+	}, [externalRef, once]);
 
 	return { isNearScreen, fromRef };
 }

@@ -9,8 +9,6 @@ export default function getGifs({ limit = 5, keyword = 'ramdom', page = 0 }) {
 		.then(response => {
 			const { data } = response;
 
-			console.log(data);
-
 			const gifs = data.map(image => {
 				const { id, title, images } = image;
 				const { url } = images.fixed_width_downsampled;
