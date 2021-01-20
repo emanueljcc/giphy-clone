@@ -21,7 +21,7 @@ function Home() {
 		<>
 			<SearchForm onSubmit={handleSubmit} />
 			<div className="text-center">
-				<h3>Last search</h3>
+				<h3>Last search.</h3>
 			</div>
 
 			<ListOfGifs gifs={gifs} loading={loading} />
