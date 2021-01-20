@@ -1,35 +1,25 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import { useLocation } from 'wouter';
 
 import useGifs from 'hooks/useGifs';
 import ListOfGifs from 'components/ListOfGifs';
 import LazyTrending from 'components/TrendingSearches';
+import SearchForm from 'components/SearchForm';
 
-export default function Home() {
-	const [keyword, setKeyword] = useState('');
+function Home() {
 	const [, setLocation] = useLocation();
 	const { loading, gifs } = useGifs();
 
-	const handleSubmit = e => {
-		e.preventDefault();
-		setLocation(`/search/${keyword}`);
-	};
-
-	const handleChange = e => setKeyword(e.target.value);
+	const handleSubmit = useCallback(
+		({ keyword }) => {
+			setLocation(`/search/${keyword}`);
+		},
+		[setLocation]
+	);
 
 	return (
 		<>
-			<form
-				style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}
-				onSubmit={handleSubmit}
-			>
-				<input
-					type="text"
-					value={keyword}
-					onChange={handleChange}
-					placeholder="Search..."
-				/>
-			</form>
+			<SearchForm onSubmit={handleSubmit} />
 			<div className="text-center">
 				<h3>Last search</h3>
 			</div>
@@ -43,3 +33,5 @@ export default function Home() {
 		</>
 	);
 }
+
+export default React.memo(Home);
